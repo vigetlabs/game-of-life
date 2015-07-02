@@ -1,0 +1,38 @@
+body {
+  text-align: center;
+  background-color: #eee;
+}
+
+table {
+  border: dotted #aaa;
+  border-width: 1px 0 0 1px;
+  margin: 50px auto 20px;
+  border-spacing: 0;
+}
+
+td {
+  border: dotted #aaa;
+  border-width: 0 1px 1px 0;
+  margin: 0;
+  padding: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #eee;
+
+  &.alive {
+    background-color: black;
+  }
+}
+
+button, input, .x {
+  margin-right: 5px;
+  line-height: 1.3em;
+}
+
+input {
+  width: 50px;
+}
+
+p {
+  margin: 0.75em;
+}

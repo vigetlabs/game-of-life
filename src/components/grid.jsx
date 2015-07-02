@@ -7,7 +7,8 @@ module.exports = React.createClass({
       width    : 20,
       height   : 20,
       data     : this.makeGrid(20, 20, (r, c) => false),
-      stepping : false
+      stepping : false,
+      interval : 100
     };
   },
 
@@ -83,7 +84,7 @@ module.exports = React.createClass({
   },
 
   start() {
-    this.setState({ stepping: window.setInterval(this.step, 100) });
+    this.setState({ stepping: window.setInterval(this.step, this.state.interval) });
   },
 
   stop() {
@@ -112,6 +113,17 @@ module.exports = React.createClass({
       height : newHeight,
       data   : newGrid
     });
+  },
+
+  updateInterval() {
+    let newInterval = React.findDOMNode(this.refs.intervalInput).value;
+
+    if (this.state.stepping) {
+      window.clearInterval(this.state.stepping);
+      this.setState({ interval: newInterval, stepping: window.setInterval(this.step, newInterval) });
+    } else {
+      this.setState({ interval: newInterval });
+    }
   },
 
   render() {
@@ -158,10 +170,16 @@ module.exports = React.createClass({
         <p>{ buttons }</p>
 
         <p>
-          <input ref="widthInput" type="number" defaultValue={this.state.width} size={ 5 } />
+          <input ref="widthInput" type="number" defaultValue={ this.state.width } />
           <span className="x">{ String.fromCharCode(215) }</span>
-          <input ref="heightInput" type="number" defaultValue={this.state.height} size={ 5 } />
+          <input ref="heightInput" type="number" defaultValue={ this.state.height } />
           <button onClick={ this.updateSize }>Update</button>
+        </p>
+
+        <p>
+          <input ref="intervalInput" type="number" defaultValue={ this.state.interval } />
+          <span className="x">ms</span>
+          <button onClick={ this.updateInterval }>Update</button>
         </p>
       </div>
     );

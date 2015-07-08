@@ -30,10 +30,8 @@ module.exports = React.createClass({
     if (this.state.stepping) {
       this.stop();
     } else {
-      let oldGrid = this.state.data;
-
-      let newGrid = this.makeGrid(this.state.width, this.state.height, function(r, c) {
-        return oldGrid[r][c] ^ (r == row && c == col);
+      let newGrid = this.makeGrid(this.state.width, this.state.height, (r, c) => {
+        return this.state.data[r][c] ^ (r == row && c == col);
       });
 
       this.setState({ data: newGrid });
@@ -61,14 +59,12 @@ module.exports = React.createClass({
   },
 
   step() {
-    let oldGrid = this.state.data, counter = this.liveNeighbors;
+    let newGrid = this.makeGrid(this.state.width, this.state.height, (r, c) => {
+      let neighbors = this.liveNeighbors(this.state.data, r, c);
 
-    let newGrid = this.makeGrid(this.state.width, this.state.height, function(r, c) {
-      let neighbors = counter(oldGrid, r, c);
-
-      if (oldGrid[r][c] && (neighbors == 2 || neighbors == 3)) {
+      if (this.state.data[r][c] && (neighbors == 2 || neighbors == 3)) {
         return true;
-      } else if ((!oldGrid[r][c]) && (neighbors == 3)) {
+      } else if ((!this.state.data[r][c]) && (neighbors == 3)) {
         return true;
       } else {
         return false;
@@ -94,15 +90,11 @@ module.exports = React.createClass({
 
   updateSize() {
     let newWidth  = React.findDOMNode(this.refs.widthInput).value,
-        newHeight = React.findDOMNode(this.refs.heightInput).value,
-        newGrid,
-        oldWidth  = this.state.width,
-        oldHeight = this.state.height,
-        oldGrid   = this.state.data;
+        newHeight = React.findDOMNode(this.refs.heightInput).value;
 
-    newGrid = this.makeGrid(newWidth, newHeight, function(r, c) {
-      if (r < oldHeight && c < oldWidth) {
-        return oldGrid[r][c];
+    let newGrid = this.makeGrid(newWidth, newHeight, (r, c) => {
+      if (r < this.state.height && c < this.state.width) {
+        return this.state.data[r][c];
       } else {
         return false;
       }

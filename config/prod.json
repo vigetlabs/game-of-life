@@ -1,0 +1,7 @@
+{
+  "apps" : [{
+    "name"   : "app",
+    "script" : "platforms/node/index.js",
+    "watch"  : false
+  }]
+}

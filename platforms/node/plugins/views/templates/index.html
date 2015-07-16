@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>{{ project.name }}</title>
+
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    {% if isProduction %}
+      <link rel="stylesheet" href="/assets/{{ project.name }}.css" />
+    {% endif %}
+  </head>
+  <body>
+    <div id="app">Loading...</div>
+    <script src="/assets/{{ project.name }}.js"></script>
+  </body>
+</html>

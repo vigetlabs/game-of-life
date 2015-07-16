@@ -1,0 +1,24 @@
+{
+  "apps" : [
+    {
+      "name"   : "app",
+      "script" : "platforms/node/index.js",
+      "ignore_watch" : [
+        "node_modules",
+        "platforms/webpack",
+        "platforms/browser",
+        "app"
+      ]
+    },
+    {
+      "name"   : "webpack",
+      "script" : "platforms/webpack",
+      "ignore_watch" : [
+        "node_modules",
+        "platforms/node",
+        "platforms/browser",
+        "app"
+      ]
+    }
+  ]
+}

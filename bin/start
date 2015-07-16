@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+source .env
+
+./bin/install
+
+if [ "$NODE_ENV" != "production" ]
+then
+    $(npm bin)/pm2-dev config/dev.json
+else
+    $(npm bin)/pm2 start config/prod.json
+fi

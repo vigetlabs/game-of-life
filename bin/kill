@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+source .env
+$(npm bin)/pm2 kill

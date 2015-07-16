@@ -1,0 +1,76 @@
+.lift-appear
+  opacity: 0
+  transform: translateY(20px)
+
+.lift-appear.lift-appear-active
+  opacity: 1
+  transform: none
+  transition: $duration-default all $bounce-subtle
+
+.lift-enter
+  opacity: 0
+  transform: translateY(20px)
+
+.lift-enter.lift-enter-active
+  opacity: 1
+  transform: none
+  transition: $duration-default all $bounce-subtle
+
+.lift-leave
+  opacity: 1
+  transform: none
+
+.lift-leave.lift-leave-active
+  opacity: 0
+  transform: translateY(-20px)
+  transition: $duration-default all $bounce-subtle
+
+.reverse-animation
+  .lift-enter
+    opacity: 0
+    transform: translateY(-20px)
+
+  .lift-enter.lift-enter-active
+    opacity: 1
+    transform: none
+    transition: $duration-default all $bounce-subtle
+
+  .lift-leave
+    opacity: 1
+    transform: none
+
+  .lift-leave.lift-leave-active
+    opacity: 0
+    transform: translateY(20px)
+    transition: $duration-default all $bounce-subtle
+
+.animate-circle
+  animation: fade-in $duration-default $bounce-subtle forwards
+
+.slide-appear
+  opacity: 0
+  transform: translateY(20px)
+
+.slide-appear.slide-appear-active
+  opacity: 1
+  transform: none
+  transition: $duration-default all $bounce-subtle
+
+.slide-enter
+  opacity: 0
+  transform: translateX(-20px)
+
+.slide-enter.slide-enter-active
+  opacity: 1
+  transform: none
+  transition: $duration-default all $bounce-subtle
+
+.slide-leave
+  opacity: 1
+  transform: none
+
+.slide-leave.slide-leave-active
+  position: absolute
+  opacity: 0
+  transform: translateX(-20px)
+  transition: $duration-default all $bounce-subtle

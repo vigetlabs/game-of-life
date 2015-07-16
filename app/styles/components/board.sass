@@ -1,0 +1,76 @@
+.home
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  width: 100%
+
+.app-title
+  color: rgba(#fff, .5)
+  font-size: 48px
+  font-weight: 600
+  display: flex
+  flex-direction: column
+  justify-content: center
+  margin: unit(10) 0 unit(6)
+  text-align: center
+  text-transform: uppercase
+  font-family: Gotham, Montserrat
+
+  .sub-title
+    margin-top: unit(1)
+    display: block
+    font-size: 60%
+    opacity: .5
+
+.board-wrapper
+  align-items: center
+  flex-grow: 1
+
+.board-wrapper,
+.board-row
+  display: flex
+  justify-content: center
+
+.board
+  border: 10px solid darken($eggplant, 10%)
+  border-radius: 10px
+  box-shadow: 0 -40px 250px rgba($bruised, .8)
+  display: inline-block
+  margin-bottom: unit(4)
+
+.board-cell
+  cursor: pointer
+
+.cell,
+.board-cell
+  height: 20px
+  width: 20px
+
+.cell
+  display: inline-block
+  box-shadow: inset 0 0 1px 0 rgba($eggplant, .2)
+
+.live-cell
+  background-color: $eggplant
+  box-shadow: inset 0 0 1px 0 darken($eggplant, 3%)
+
+  +hover
+    background-color: $pink
+
+  &.unclickable:hover,
+  &.unclickable:focus
+    background-color: mix($eggplant, $pink, 70%)
+    cursor: not-allowed
+
+.dead-cell
+  background-color: #fff
+
+  +hover
+    background-color: $perrywinkle
+
+  &.unclickable:hover,
+  &.unclickable:focus
+    background-color: mix(#fff, $perrywinkle, 70%)
+    cursor: not-allowed
+
+

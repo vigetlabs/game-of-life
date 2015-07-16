@@ -1,0 +1,123 @@
+=icon
+  font-family: 'icons'
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  font-style: normal
+  font-weight: normal
+  font-variant: normal
+  display: inline-block
+  line-height: 1
+  speak: none
+  text-transform: none
+  vertical-align: middle
+
+  &:before
+    font-size: 24px
+
+=icon-tiny
+  &:before
+    font-size: 12px
+
+=icon-small
+  &:before
+    font-size: 16px
+
+=icon-large
+  &:before
+    font-size: 32px
+
+$icon-profile: '\e600'
+
+=icon-profile
+  +icon
+  &:before
+    content: $icon-profile
+
+.icon.-profile
+  +icon-profile
+
+
+$icon-cog: '\e601'
+
+=icon-cog
+  +icon
+  &:before
+    content: $icon-cog
+
+.icon.-cog
+  +icon-cog
+
+
+$icon-arrow-down: '\e602'
+
+=icon-arrow-down
+  +icon
+  &:before
+    content: $icon-arrow-down
+
+.icon.-arrow-down
+  +icon-arrow-down
+
+
+$icon-arrow-up: '\e603'
+
+=icon-arrow-up
+  +icon
+  &:before
+    content: $icon-arrow-up
+
+.icon.-arrow-up
+  +icon-arrow-up
+
+
+$icon-arrow-left: '\e604'
+
+=icon-arrow-left
+  +icon
+  &:before
+    content: $icon-arrow-left
+
+.icon.-arrow-left
+  +icon-arrow-left
+
+
+$icon-arrow-right: '\e605'
+
+=icon-arrow-right
+  +icon
+  &:before
+    content: $icon-arrow-right
+
+.icon.-arrow-right
+  +icon-arrow-right
+
+
+$icon-plus: '\e606'
+
+=icon-plus
+  +icon
+  &:before
+    content: $icon-plus
+
+.icon.-plus
+  +icon-plus
+
+
+$icon-info: '\e607'
+
+=icon-info
+  +icon
+  &:before
+    content: $icon-info
+
+.icon.-info
+  +icon-info
+
+.icon.-tiny
+  +icon-tiny
+
+.icon.-small
+  +icon-small
+
+.icon.-large
+  +icon-large

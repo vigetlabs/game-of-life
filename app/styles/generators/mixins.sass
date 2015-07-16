@@ -1,0 +1,35 @@
+=default-transition
+  transition: all $duration-default ease-in
+
+=short-transition
+  transition: all $duration-short ease-in
+
+=font-smoothing
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  font-smoothing: antialiased
+
+=appearance($value)
+  -webkit-appearance: $value
+  -moz-appearance: $value
+  appearance: $value
+
+=hover
+  &:hover,
+  &:focus
+    @content
+
+=clearfix
+  *zoom: 1
+
+  &:before,
+  &:after
+    content: ' '
+    display: table
+
+  &:after
+    clear: both
+
+=keyframes($name)
+  @keyframes #{$name}
+    @content

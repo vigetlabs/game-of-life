@@ -1,0 +1,98 @@
+.game-controls
+  color: #ddd
+  display: flex
+  justify-content: space-between
+  margin: unit(6) 0 0
+  position: relative
+
+  > .game-controls-group
+    align-items: center
+    display: flex
+    justify-content: center
+    padding: unit(4)
+    white-space: nowrap
+
+  .button + .button
+    margin-left: 1px
+
+  .label,
+  .value,
+  .button
+    font-size: 12px
+    text-transform: uppercase
+    font-weight: bold
+
+  .label
+    margin-right: unit(2)
+
+  .button
+    appearance: none
+    background-color: rgba(darken($eggplant, 15%), .5)
+    border: 0
+    color: #fff
+    line-height: 1
+    padding: unit(2) + 1px unit(4) unit(2)
+    position: relative
+    transition: all 150ms ease-out
+
+    +hover
+      background-color: $bruised
+      outline: none
+
+    &:active:not([disabled])
+      background-color: lighten($bruised, 5%)
+
+    &[disabled]
+      background-color: rgba(darken($eggplant, 15%), .1)
+      color: rgba(#fff, .5)
+
+    &.play-button
+      text-align: center
+      width: 70px
+
+  input
+    background-color: rgba(darken($eggplant, 15%), .5)
+    border: 0
+    color: #fff
+    height: 30px
+    line-height: 30px
+    font-size: 12px
+    padding: 0 unit(2)
+
+    &:focus
+      background-color: #fff
+      color: $eggplant
+
+    &[disabled]
+      background-color: transparent
+      font-weight: bold
+
+.board-size
+  .mult-sign
+    display: inline-block
+    margin: 2px 5px
+    vertical-align: middle
+
+.board-size,
+.tick-rate,
+.tick-time
+  margin-left: unit(4)
+
+  .value
+    display: inline-block
+    height: 30px
+    line-height: 30px
+    opacity: .5
+
+.game-age
+  color: rgba(#fff, .5)
+  border-right: 1px solid $eggplant
+  padding-right: unit(4)
+  font-weight: 300
+  line-height: 1
+  margin-top: -1px
+  text-align: center
+
+  > b
+    color: #fff
+    vertical-align: text-bottom

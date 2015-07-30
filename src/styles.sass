@@ -1,18 +1,72 @@
+$green:            #406040
+$green-gradient:   #799079
+$green-gray:       #9cb49c
+$light-green-gray: #b2c9b2
+$forest-green:     #093709
+$dark-green:       #152315
+
+html,body
+  margin: 0px
+  padding: 0px
+
 .board
-  background-color: gray
+  display: block
   list-style-type: none
-  padding: 30px
-  width: 340px
+  margin: 0 auto
+  padding: 25px 0px 5px 0px
+  text-align: center
+
+.board-size
+  border: none
+  border-radius: 3px
+  color: $dark-green
+  font-size: 1em
+  height: 2em
+  margin: 0px 0px 0px 10px
+  padding: 0px 0px 0px 5px
+  width:  8em
+
+.board-wrapper
+  background-image: linear-gradient($green, $green-gradient)
+  min-height: 100%
+  min-width: 100%
+  position: absolute
+
+.button
+  background-color: $dark-green
+  border: none
+  border-radius: 3px
+  color: white
+  height: 2em
+  width:  6em
+  font-size: 1em
+
+  &:hover
+    background-color: $forest-green
 
 .cell
-  background-color: lightgray
+  background-color: $light-green-gray
   border: 1px solid white
   display: inline-block
   height: 15px
   width: 15px
 
   &.-alive
-    background-color: green
+    background-color: $forest-green
+
+.control
+  display: inline-block
+  margin: 5px
+
+.controls
+  margin: auto
+  width: 33%
+  padding: 0px 0px 0px 93px
+
+.dropdown
+  @extend .button
+  width: 10em
+  margin: 5px
 
 .row
   font-size: 0

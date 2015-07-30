@@ -1,19 +1,23 @@
-import React from 'react'
+import React    from 'react'
+import Controls from 'controls'
 
+const SIZE  = 20
 const ALIVE = 1
 const DEAD  = 0
 const SPEED = 1000
+
 const Board = React.createClass({
   getInitialState() {
-    return {
-      size:    20,
-      rows:    this.buildRows(20),
-      ticking: false
-    }
+    return this.defaults()
   },
 
-  componentDidMount() {
-    this.start()
+  defaults() {
+    return {
+      size:    SIZE,
+      rows:    this.buildRows(SIZE),
+      ticking: false,
+      speed:   SPEED
+    }
   },
 
   buildRows(size) {
@@ -48,10 +52,6 @@ const Board = React.createClass({
   },
 
   tick() {
-    if (!this.state.ticking) return
-
-    console.log("Tick!")
-
     let rows = []
 
     for (let y = 0; y < this.state.size; y++) {
@@ -92,17 +92,60 @@ const Board = React.createClass({
     return count
   },
 
+  repeatTick() {
+    this.tick()
+    this.timeout = setTimeout(this.repeatTick, this.state.speed)
+  },
+
   start() {
     this.setState({ ticking: true })
+    this.repeatTick()
+  },
 
-    setInterval(() => { this.tick.call(this) }, SPEED)
+  stop() {
+    clearInterval(this.timeout)
+
+    this.setState({ ticking: false })
+  },
+
+  toggle() {
+    this.state.ticking ? this.stop() : this.start()
+  },
+
+  setSpeed(value) {
+    this.setState({ speed: value })
+  },
+
+  reset() {
+    this.stop()
+    this.setState(this.defaults())
+  },
+
+  setSize(size) {
+    this.stop()
+    this.setState({
+      size: size,
+      rows: this.buildRows(size)
+    })
   },
 
   render() {
     return (
-      <ul className="board">
-        { this.state.rows.map(this.drawRow) }
-      </ul>
+      <div className="board-wrapper">
+        <ul className="board">
+          { this.state.rows.map(this.drawRow) }
+        </ul>
+
+        <Controls
+          ticking={ this.state.ticking }
+          toggled={ this.toggle }
+          tick={ this.tick }
+          speed={ this.state.speed }
+          setSpeed={ this.setSpeed }
+          reset={ this.reset }
+          setSize={ this.setSize }
+        />
+      </div>
     )
   }
 })

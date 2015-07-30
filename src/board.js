@@ -26,7 +26,7 @@ const Board = React.createClass({
     for (let i = 0; i < Math.pow(size, 2); i++) {
       let x     = i % size
       let y     = Math.floor(i / size)
-      let alive = Math.round(Math.random())
+      let alive = DEAD
 
       rows[y] = (rows[y] || []).concat([alive])
     }
@@ -47,8 +47,15 @@ const Board = React.createClass({
     if (alive) classes += " -alive"
 
     return (
-      <li className={ classes } key={ `${x}/${y}` } />
+      <li className={ classes } key={ `${x}/${y}` } onMouseOver={ this.giveLife.bind(this, x, y) } />
     )
+  },
+
+  giveLife(x, y) {
+    if (this.state.ticking === false) {
+      this.state.rows[y][x] = ALIVE
+      this.setState({ rows: this.state.rows })
+    }
   },
 
   tick() {
